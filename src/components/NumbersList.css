@@ -1,0 +1,63 @@
+.phone-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.conteiner {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact,
+.table-headliners {
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+  color: rgb(227, 242, 245);
+  background-color: rgb(37, 106, 124);
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  transition-property: all;
+  transition-duration: 0.8s;
+  transition-timing-function: linear;
+}
+
+.contact:hover {
+  background-color: rgb(7, 168, 152);
+  /* width: 34%; */
+}
+
+.table-headliners,
+.button-headliners {
+  background-color: rgb(212, 161, 9);
+}
+
+.table-headliners button {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 5px;
+  border: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  color: rgb(227, 242, 245);
+  transition: all 0.8s linear;
+}
+
+.headliners-sort {
+  text-decoration: overline;
+}
+
+.table-headliners:hover,
+.button-headliners:hover {
+  background-color: rgb(158, 120, 6);
+  /* width: 34%; */
+}
