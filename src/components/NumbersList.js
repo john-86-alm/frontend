@@ -11,9 +11,10 @@ const NumbersList = () => {
         return list.sort((a, b) => (a[param] > b[param] ? 1 : -1))
     }
 
-    const filterNumbersList = numbers.filter(({ number, location, group }) => {
+    const filterNumbersList = numbers.filter(({ number, location, user, group }) => {
         const matches = String(number)
             .concat(location)
+            .concat(user)
             .concat(group)
             .toLowerCase()
             .includes(String(text).toLowerCase())
@@ -50,6 +51,17 @@ const NumbersList = () => {
                 </div>
                 <div className="table-headliners">
                     <button
+                        onClick={() => setSortParam('user')}
+                        type="button"
+                        className={`button-headliners ${
+                            sortParam === 'user' ? 'headliners-sort' : ''
+                        } `}
+                    >
+                        Пользователь
+                    </button>
+                </div>
+                <div className="table-headliners">
+                    <button
                         onClick={() => setSortParam('group')}
                         type="button"
                         className={`button-headliners ${
@@ -64,6 +76,7 @@ const NumbersList = () => {
                 <div className="conteiner" key={i}>
                     <div className="contact">{number.number}</div>
                     <div className="contact">{number.location}</div>
+                    <div className="contact">{number.user}</div>
                     <div className="contact">{number.group}</div>
                 </div>
             ))}
