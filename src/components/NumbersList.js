@@ -15,7 +15,7 @@ const NumbersList = () => {
         setIsLoading(true)
         setError('')
 
-        const response = await fetch('http://127.0.0.1:8000/api/contacts')
+        const response = await fetch('http://192.168.0.233:8000/api/contacts')
 
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`)
