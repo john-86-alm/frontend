@@ -13,10 +13,30 @@
   margin-bottom: 20px;
 }
 
+.app-search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .app-main {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 80%;
+  justify-content: center;
+  width: 100%;
   margin: 0 auto;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    margin-bottom: 16px;
+  }
+
+  .app-main {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
 }

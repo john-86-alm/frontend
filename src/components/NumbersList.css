@@ -217,33 +217,89 @@
   filter: brightness(1.04);
 }
 
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .conteiner {
-    width: min(92%, 900px);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(94%, 900px);
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
   .phone-table {
-    gap: 8px;
+    gap: 12px;
+    padding-bottom: 16px;
   }
 
   .conteiner {
-    width: calc(100% - 24px);
+    width: min(calc(100% - 28px), 500px);
     grid-template-columns: 1fr;
     border-radius: 20px;
   }
 
-  .contact,
-  .table-headliners,
-  .table-headliners button {
-    min-height: 58px;
-    font-size: 0.94rem;
+  .table-header-row {
+    display: none;
   }
 
-  .contact-number {
-    font-size: 1rem;
+  .table-data-row {
+    padding: 10px 0;
+  }
+
+  .table-data-row .contact {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(126px, 152px) minmax(0, 1fr);
+    align-items: center;
+    justify-content: stretch;
+    column-gap: 12px;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 1.08rem;
+    line-height: 1.45;
+  }
+
+  .table-data-row .contact::before {
+    content: attr(data-label);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(227, 242, 245, 0.64);
+  }
+
+  .table-data-row .contact-number {
+    padding-top: 16px;
+    padding-bottom: 14px;
+    font-size: 1.22rem;
+    letter-spacing: 0.04em;
+    color: rgb(251, 253, 253);
+  }
+
+  .table-data-row .contact-number::before {
+    color: rgba(255, 250, 236, 0.78);
+  }
+}
+
+@media (max-width: 400px) {
+  .conteiner {
+    width: calc(100% - 16px);
+  }
+
+  .table-data-row .contact {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 1.02rem;
+    text-align: center;
+  }
+
+  .table-data-row .contact::before {
+    font-size: 0.8rem;
+  }
+
+  .table-data-row .contact-number {
+    font-size: 1.14rem;
   }
 }
 
