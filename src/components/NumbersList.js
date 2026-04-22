@@ -1,38 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
+import numbers from '../data/numbers'
 import UserContext from '../context/UserContext'
 import './NumbersList.css'
 
 const NumbersList = () => {
   const { text } = useContext(UserContext)
-  const [numbers, setNumbers] = useState([])
   const [sortParam, setSortParam] = useState('number')
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    const fetchContacts = async () => {
-      try {
-        setIsLoading(true)
-        setError('')
-
-        const response = await fetch('http://192.168.0.233:8000/api/contacts')
-
-        if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`)
-        }
-
-        const data = await response.json()
-        setNumbers(Array.isArray(data) ? data : [])
-      } catch (err) {
-        setError('Не удалось загрузить контакты')
-        console.error(err)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchContacts()
-  }, [])
 
   function sortList(list, param) {
     return list.sort((a, b) => (a[param] > b[param] ? 1 : -1))
@@ -52,36 +25,6 @@ const NumbersList = () => {
   )
 
   sortList(filterNumbersList, sortParam)
-
-  if (isLoading) {
-    return (
-      <div className="phone-table">
-        <div className="loader-card">
-          <div className="loader-spinner" aria-hidden="true"></div>
-          <p className="loader-title">Загружаем контакты</p>
-          <p className="loader-subtitle">
-            Подготавливаем список номеров для отображения
-          </p>
-        </div>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="phone-table">
-        <div className="error-card">
-          <div className="error-icon" aria-hidden="true">
-            !
-          </div>
-          <p className="error-title">{error}</p>
-          <p className="error-subtitle">
-            Свяжитесь со службой поддержки - вн. номер 777 Евгений, 710 Илья
-          </p>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="phone-table">
