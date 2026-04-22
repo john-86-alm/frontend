@@ -29,11 +29,11 @@ const NumbersList = () => {
   return (
     <div className="phone-table">
       <div className="conteiner">
-        <div className="table-headliners">
+        <div className="table-headliners table-headliners-number">
           <button
             onClick={() => setSortParam('number')}
             type="button"
-            className={`button-headliners ${
+            className={`button-headliners button-headliners-number ${
               sortParam === 'number' ? 'headliners-sort' : ''
             } `}
           >
@@ -76,7 +76,7 @@ const NumbersList = () => {
       </div>
       {filterNumbersList.map((number, i) => (
         <div className="conteiner" key={i}>
-          <div className="contact">{number.number}</div>
+          <div className="contact contact-number">{number.number}</div>
           <div className="contact">{number.location}</div>
           <div className="contact">{number.user}</div>
           <div className="contact">{number.group}</div>

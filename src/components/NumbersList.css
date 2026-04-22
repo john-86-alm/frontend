@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+  padding-bottom: 20px;
   text-align: center;
 }
 
@@ -77,58 +79,172 @@
 }
 
 .conteiner {
-  display: flex;
-  width: 80%;
-  align-items: center;
-  justify-content: space-between;
+  --row-divider: rgba(221, 243, 247, 0.12);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  width: min(88%, 1120px);
+  padding: 0;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(160, 215, 228, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.phone-table > .conteiner:first-child {
+  --row-divider: rgba(255, 244, 211, 0.2);
+  background: linear-gradient(135deg, rgb(222, 172, 20), rgb(183, 125, 8));
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.phone-table > .conteiner:not(:first-child) {
+  background: linear-gradient(145deg, rgba(35, 116, 137, 0.96), rgba(18, 77, 96, 0.98));
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.phone-table > .conteiner:not(:first-child):hover {
+  transform: translateY(-2px);
+  border-color: rgba(170, 230, 238, 0.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 .contact,
 .table-headliners {
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 24.7%;
-  color: rgb(227, 242, 245);
-  background-color: rgb(37, 106, 124);
-  margin-top: 3px;
-  margin-bottom: 3px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  transition-property: all;
-  transition-duration: 0.4s;
-  transition-timing-function: linear;
+  width: 100%;
+  min-height: 62px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  color: rgb(239, 248, 250);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  text-align: center;
+  overflow-wrap: anywhere;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .contact:hover {
-  background-color: rgb(7, 168, 152);
-  /* width: 34%; */
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.table-headliners,
+.contact-number {
+  background: transparent;
+  box-shadow: none;
+  color: rgb(248, 252, 253);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.contact-number:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.table-headliners {
+  padding: 0;
+  color: rgb(255, 250, 236);
+}
+
+.table-headliners-number {
+  box-shadow: none;
+  background: transparent;
+}
+
 .button-headliners {
-  background-color: rgb(212, 161, 9);
+  background: transparent;
+}
+
+.button-headliners-number {
+  font-size: clamp(1.08rem, 1.55vw, 1.35rem);
 }
 
 .table-headliners button {
   width: 100%;
-  height: 100%;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  border-radius: 5px;
+  border-radius: 0;
   border: 0;
-  padding: 0;
-  font-size: 1.6rem;
-  color: rgb(227, 242, 245);
-  transition: all 0.8s linear;
+  padding: 8px 12px;
+  position: relative;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  transition:
+    background 0.25s ease,
+    filter 0.25s ease;
 }
 
 .headliners-sort {
-  text-decoration: overline;
+  text-decoration: none;
 }
 
-.table-headliners:hover,
+.button-headliners.headliners-sort::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 6px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 250, 236, 0.92);
+}
+
 .button-headliners:hover {
-  background-color: rgb(158, 120, 6);
-  /* width: 34%; */
+  background: rgba(255, 255, 255, 0.06);
+  filter: brightness(1.04);
+}
+
+@media (max-width: 960px) {
+  .conteiner {
+    width: min(92%, 900px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .phone-table {
+    gap: 8px;
+  }
+
+  .conteiner {
+    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+  }
+
+  .contact,
+  .table-headliners,
+  .table-headliners button {
+    min-height: 58px;
+    font-size: 0.94rem;
+  }
+
+  .contact-number {
+    font-size: 1rem;
+  }
 }
 
 @keyframes spin {
