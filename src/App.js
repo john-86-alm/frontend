@@ -15,7 +15,7 @@ function App() {
                 <header className="app-header">
                     <h1>Справочник внутренних номеров</h1>
                 </header>
-                <div>
+                <div className="app-search">
                     <Filter />
                 </div>
                 <main className="app-main">

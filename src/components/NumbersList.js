@@ -56,7 +56,7 @@ const NumbersList = () => {
   if (isLoading) {
     return (
       <div className="phone-table">
-        <div className="loader-card">
+        <div className="conteiner table-row table-header-row">
           <div className="loader-spinner" aria-hidden="true"></div>
           <p className="loader-title">Загружаем контакты</p>
           <p className="loader-subtitle">
@@ -86,11 +86,11 @@ const NumbersList = () => {
   return (
     <div className="phone-table">
       <div className="conteiner">
-        <div className="table-headliners">
+        <div className="table-headliners table-headliners-number">
           <button
             onClick={() => setSortParam('number')}
             type="button"
-            className={`button-headliners ${
+            className={`button-headliners button-headliners-number ${
               sortParam === 'number' ? 'headliners-sort' : ''
             } `}
           >
@@ -132,11 +132,35 @@ const NumbersList = () => {
         </div>
       </div>
       {filterNumbersList.map((number, i) => (
-        <div className="conteiner" key={i}>
-          <div className="contact">{number.number}</div>
-          <div className="contact">{number.location}</div>
-          <div className="contact">{number.user}</div>
-          <div className="contact">{number.group}</div>
+        <div className="conteiner table-row table-data-row" key={i}>
+          <div
+            className="contact contact-number"
+            data-label={'\u041d\u043e\u043c\u0435\u0440'}
+          >
+            {number.number}
+          </div>
+          <div
+            className="contact"
+            data-label={
+              '\u0420\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435'
+            }
+          >
+            {number.location}
+          </div>
+          <div
+            className="contact"
+            data-label={
+              '\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c'
+            }
+          >
+            {number.user}
+          </div>
+          <div
+            className="contact"
+            data-label={'\u041e\u0442\u0434\u0435\u043b'}
+          >
+            {number.group}
+          </div>
         </div>
       ))}
     </div>
